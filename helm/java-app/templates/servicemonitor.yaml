@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: asgn-10-java-app
+  labels:
+    release: monitoring
+
+spec:
+  selector:
+    matchLabels:
+      app: asgn-10-java-app
+
+  namespaceSelector:
+    matchNames:
+      - default
+
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      interval: 15s

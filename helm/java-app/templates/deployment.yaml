@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: asgn-10-java-app
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: asgn-10-java-app
+ template:
+   metadata:
+     labels:
+       app: asgn-10-java-app
+   spec:
+     containers:
+     - name: app
+       image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+       ports:
+       - containerPort: 8080
+

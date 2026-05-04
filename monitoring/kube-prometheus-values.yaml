@@ -1,0 +1,14 @@
+grafana:
+  adminPassword: admin123
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+    # additionalScrapeConfigs:
+    #   - job_name: "jenkins-node"
+    #     static_configs:
+    #       - targets:
+    #           - "10.4.85.47:9100"
+
+    
