@@ -22,14 +22,18 @@ jobs:
 
       - name: Build using gradle-container
         run: |
-          docker exec gradle-container bash -c "
+            docker exec gradle-container bash -c "
             rm -rf /tmp/app &&
-            mkdir -p /tmp/app &&
-            cp -r /github/workspace/app /tmp/app &&
+            mkdir -p /tmp/app
+            "
+
+            docker cp $PWD/app gradle-container:/tmp/
+
+            docker exec gradle-container bash -c "
             cd /tmp/app &&
             chmod +x gradlew &&
             ./gradlew clean build
-          "
+            "
 
     
       - name: Copy JAR from container
