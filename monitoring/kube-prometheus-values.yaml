@@ -1,9 +1,15 @@
 grafana:
   adminPassword: admin123
+  service:
+    type: NodePort
+    nodePort: 30006
 
 prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
+  service:
+    type: NodePort
+    nodePort: 30005
 
     # additionalScrapeConfigs:
     #   - job_name: "jenkins-node"
