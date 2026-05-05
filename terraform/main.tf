@@ -59,7 +59,7 @@ resource "aws_security_group" "main_security_group" {
     }
 
     ingress {
-        from_port = 6443    #for K3s Cluster deployment
+        from_port = 6443    #for K3s Cluster deployment but not using now since deploying with SSh
         to_port = 6443
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
