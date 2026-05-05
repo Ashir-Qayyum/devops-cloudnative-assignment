@@ -108,6 +108,11 @@ resource "aws_instance" "main_instance" {
     key_name = "asgn-10-key"
     #associate_public_ip_address = true
 
+    root_block_device {     #Added this bcoz of prometheus as it needs a lot of mem and was corrupting the cluster - causing 
+        volume_size = 30    # pod eviction and preventing the scheduling of new pods
+        volume_type = "gp3"
+    }
+
 
     tags = {
       Project = "asgn-10"
