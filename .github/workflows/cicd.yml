@@ -87,7 +87,7 @@ jobs:
           echo "${{ secrets.AWS_SSH_KEY }}" > key.pem
           chmod 600 key.pem
 
-          ssh -i key.pem ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
+          ssh -i key.pem ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} 
 
             cd ~/devops-cloudnative-assignment
 
@@ -102,7 +102,7 @@ jobs:
             
             kubectl rollout status deployment/asgn-10-java-app
 
-          EOF
+         
 
       
       - name: Test Deployment
