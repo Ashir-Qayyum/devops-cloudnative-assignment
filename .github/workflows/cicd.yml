@@ -109,4 +109,4 @@ jobs:
         run: |
           echo "Waiting for app..."
           sleep 30
-          curl -f http://${{ secrets.AWS_HOST }}:30004
+          curl -f http://${{ secrets.AWS_HOST }}:30004/actuator/health
