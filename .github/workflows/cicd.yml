@@ -76,11 +76,15 @@ jobs:
         run: |
           docker build -t ashirqayyum/asgn-10-java-app:latest .
 
+
+
     
       - name: Push Image
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker push ashirqayyum/asgn-10-java-app:latest
+
+
 
      
       - name: Deploy to AWS via SSH + Helm
@@ -106,3 +110,6 @@ jobs:
           EOF
          
 
+
+
+          
