@@ -92,20 +92,20 @@ jobs:
           echo "${{ secrets.AWS_SSH_KEY }}" > key.pem
           chmod 600 key.pem
 
-          ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
+          ssh -i key.pem ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
 
             cd ~/devops-cloudnative-assignment
 
-            echo "Pull latest image"
+            
             docker pull ashirqayyum/asgn-10-java-app:latest
 
-            echo "Upgrade Helm release"
+            
             helm upgrade java-app ./helm/java-app \
               --set image.repository=ashirqayyum/asgn-10-java-app \
               --set image.tag=latest
 
-            echo "Wait for rollout"
-            kubectl rollout status deployment/asgn-10-java-app
+            
+            kubectl rollout restart deployment/asgn-10-java-app
 
           EOF
          
